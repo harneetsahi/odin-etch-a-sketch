@@ -3,15 +3,17 @@ const container = document.querySelector(".container");
 const body = document.querySelector("body");
 
 // Resizing grid
-button.addEventListener("click", () => {
-  const newGridSize = prompt("How many squares should be in the grid?");
+button.addEventListener("click", resizingGrid);
+  
+function resizingGrid()  {
+  let newGridSize = prompt("How many squares should be in the grid?");
 
-  if (newGridSize < 100 && newGridSize > 0 && newGridSize !== NaN) {
-    createGrid(newGridSize);
-  } else {
-    prompt("Enter a number less than 100 and greater than 0");
+  while (newGridSize > 100 || newGridSize < 1 || newGridSize === NaN) {
+    newGridSize = prompt("Enter a number less than 100 and greater than 0");
   }
-});
+
+  createGrid(newGridSize);
+};
 
 // Creating grid
 function createGrid(size) {
